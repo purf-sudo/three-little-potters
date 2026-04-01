@@ -1,6 +1,6 @@
 "use client";
 
-export const Component = () => {
+export const Component = ({ children }: { children?: React.ReactNode }) => {
   return (
     <div className="min-h-screen w-full relative bg-black">
       {/* Looping Background Video */}
@@ -9,15 +9,13 @@ export const Component = () => {
         loop
         muted
         playsInline
-        className="absolute inset-0 z-0 h-full w-full object-cover opacity-40"
+        className="fixed inset-0 z-0 h-full w-full object-cover opacity-30"
       >
         <source src="/ThreeLittlePottersBackground.mp4" type="video/mp4" />
       </video>
 
-      {/* Content goes here */}
-      <div className="relative z-10">
-        {/* Your site content */}
-      </div>
+      {/* Content */}
+      <div className="relative z-10">{children}</div>
     </div>
   );
 };
