@@ -1,35 +1,57 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import { Component } from "@/components/ui/background-components";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { ShoppingBag, Images, ArrowRight } from "lucide-react";
+import { ShoppingBag, Images, ArrowRight, Play } from "lucide-react";
 
 export default function Home() {
-  const [introEnded, setIntroEnded] = useState(false);
+  const [introState, setIntroState] = useState<"waiting" | "playing" | "ended">("waiting");
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const startIntro = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.play().then(() => {
+      setIntroState("playing");
+    });
+  }, []);
 
   return (
     <>
       {/* Intro Video */}
-      {!introEnded && (
-        <div className="fixed inset-0 z-50 bg-black">
+      {introState !== "ended" && (
+        <div
+          className="fixed inset-0 z-50 flex cursor-pointer items-center justify-center bg-black"
+          onClick={introState === "waiting" ? startIntro : undefined}
+        >
           <video
-            autoPlay
+            ref={videoRef}
             playsInline
-            onEnded={() => setIntroEnded(true)}
+            onEnded={() => setIntroState("ended")}
             className="h-full w-full object-cover"
           >
             <source src="/ThreeLittlePottersIntro.mp4" type="video/mp4" />
           </video>
+
+          {/* Play button overlay - shown until video starts */}
+          {introState === "waiting" && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60">
+              <div className="rounded-full bg-amber-100/20 p-6 backdrop-blur-sm transition-transform hover:scale-110">
+                <Play size={48} className="text-amber-100" fill="currentColor" />
+              </div>
+              <p className="mt-4 text-sm text-amber-100/60">Tap to play</p>
+            </div>
+          )}
         </div>
       )}
 
       {/* Main Site */}
       <div
         className={`transition-opacity duration-1000 ${
-          introEnded ? "opacity-100" : "opacity-0"
+          introState === "ended" ? "opacity-100" : "opacity-0"
         }`}
       >
         <Component>
