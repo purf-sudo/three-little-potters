@@ -1,11 +1,10 @@
-import Link from "next/link";
-import { Instagram, Facebook, Youtube, ShoppingBag } from "lucide-react";
+import { InstagramIcon, FacebookIcon, YoutubeIcon, ShoppingBagIcon } from "@/components/icons";
 
 const socials = [
-  { href: "https://www.instagram.com/three.little.potters/", icon: Instagram, label: "Instagram" },
-  { href: "https://www.facebook.com/threelittlepotters/", icon: Facebook, label: "Facebook" },
-  { href: "https://www.youtube.com/@threelittlepotters", icon: Youtube, label: "YouTube" },
-  { href: "https://www.etsy.com/shop/ThreeLittlePotters/", icon: ShoppingBag, label: "Etsy" },
+  { href: "https://www.instagram.com/three.little.potters/", icon: InstagramIcon, label: "Instagram" },
+  { href: "https://www.facebook.com/threelittlepotters/", icon: FacebookIcon, label: "Facebook" },
+  { href: "https://www.youtube.com/@threelittlepotters", icon: YoutubeIcon, label: "YouTube" },
+  { href: "https://www.etsy.com/shop/ThreeLittlePotters/", icon: ShoppingBagIcon, label: "Etsy" },
 ];
 
 export function Footer() {

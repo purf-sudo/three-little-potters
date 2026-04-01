@@ -4,13 +4,14 @@ import { useState } from "react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Component } from "@/components/ui/background-components";
-import { Instagram, Facebook, Youtube, ShoppingBag, Send } from "lucide-react";
+import { Send } from "lucide-react";
+import { InstagramIcon, FacebookIcon, YoutubeIcon, ShoppingBagIcon } from "@/components/icons";
 
 const socials = [
-  { href: "https://www.instagram.com/three.little.potters/", icon: Instagram, label: "Instagram", handle: "@three.little.potters" },
-  { href: "https://www.facebook.com/threelittlepotters/", icon: Facebook, label: "Facebook", handle: "Three Little Potters" },
-  { href: "https://www.youtube.com/@threelittlepotters", icon: Youtube, label: "YouTube", handle: "@threelittlepotters" },
-  { href: "https://www.etsy.com/shop/ThreeLittlePotters/", icon: ShoppingBag, label: "Etsy Shop", handle: "ThreeLittlePotters" },
+  { href: "https://www.instagram.com/three.little.potters/", icon: InstagramIcon, label: "Instagram", handle: "@three.little.potters" },
+  { href: "https://www.facebook.com/threelittlepotters/", icon: FacebookIcon, label: "Facebook", handle: "Three Little Potters" },
+  { href: "https://www.youtube.com/@threelittlepotters", icon: YoutubeIcon, label: "YouTube", handle: "@threelittlepotters" },
+  { href: "https://www.etsy.com/shop/ThreeLittlePotters/", icon: ShoppingBagIcon, label: "Etsy Shop", handle: "ThreeLittlePotters" },
 ];
 
 export default function ContactPage() {
